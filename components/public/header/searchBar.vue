@@ -8,24 +8,19 @@
         class="center">
         <div class="wrapper">
             <el-input
+            v-model="searchText"
+            @focus="searchInputFocus"
+            @blur="searchInputBlur"
+            @input="searchInputInput"
             placeholder="搜索商家或地点"/>
           <button class="el-button el-button--primary"><i class="el-icon-search"/></button>
-          <dl class="hotPlace">
-              <dt>热门搜索</dt>
-              <dd>热门搜索</dd>
-              <dd>热门搜索</dd>
-              <dd>热门搜索</dd>
-              <dd>热门搜索</dd>
-              <dd>热门搜索</dd>
-              <dd>热门搜索</dd>
+          <dl class="hotPlace" v-if="hotPlace">
+              <dt>光标聚焦内容为空</dt>
+              <dd v-for="(txt,index) in hotPlaceList" :key="index">{{txt}}</dd>
           </dl>
-          <dl class="searchList">
-              <dd>热门搜索</dd>
-              <dd>热门搜索</dd>
-              <dd>热门搜索</dd>
-              <dd>热门搜索</dd>
-              <dd>热门搜索</dd>
-              <dd>热门搜索</dd>
+          <dl class="searchList" v-if="searchPlace">
+              <dd>光标聚焦内容不为空</dd>
+              <dd v-for="(txt,index) in searchPlaceList" :key="index">{{txt}}</dd>
           </dl>
         </div>
         <p class="suggset">
@@ -67,7 +62,39 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return {
+      searchText:"",
+      isFoucs:false,
+      hotPlaceList:["推荐搜索","推荐搜索","推荐搜索"],
+      searchPlaceList:["推荐搜索","推荐搜索","推荐搜索"]
+    }
+  },
+  computed:{
+    hotPlace(){
+      return this.isFoucs&&!this.searchText
+    },
+    searchPlace(){
+      return this.isFoucs&&this.searchText
+    },
+  },
+  methods:{
+    searchInputFocus(){
+      this.isFoucs = true
+    },
+    searchInputBlur(){
+      setTimeout(()=>{
+        this.isFoucs = false;
+      },300)
+      
+    },
+    searchInputInput(value){
+      console.log("input")
+    },
+
+  }
+};
 </script>
 
 <style lang="scss" scoped>

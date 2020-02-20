@@ -22,10 +22,12 @@
           border-radius: 4px;
           width: 552px;
           box-sizing: border-box;
+          // height:40px;
           position: relative;
           white-space: nowrap;
           .el-input {
             width: 462px;
+            // height: 38px;
           }
           input {
             border: none;
@@ -40,6 +42,8 @@
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
             vertical-align: -1px;
+            // padding-bottom: 10px;
+            // padding-top: 13px;
             i {
               font-weight: bold;
             }
