@@ -49,6 +49,7 @@
 </template>
 
 <script>
+var CryptoJS = require("crypto-js");
 export default {
   layout: "blank",
   data() {

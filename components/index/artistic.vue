@@ -81,7 +81,7 @@ export default {
         // let tag = dom.tagName.toLowerCase()
         // let city = this.$store.state.geo.position.city
         this.handleOver(index,"北京")
-        
+
         // }
       },
       handleOver:async function(index,city){
